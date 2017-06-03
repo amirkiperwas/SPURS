@@ -3,6 +3,7 @@ function [ OutputImages, b_hat] = SPURS(b, Kappa_m, SPURS_settings)
 b_hat = NaN;
 M = length(b);
 sqrtN = SPURS_settings.sqrtN;
+alpha = SPURS_settings.alpha;
 
 if SPURS_settings.OverGridFactor ~= ceil(sqrtN*SPURS_settings.OverGridFactor/2)*2/sqrtN
     disp(['Over grid factor was corrected from ',num2str(SPURS_settings.OverGridFactor),' to ',num2str(ceil(sqrtN*SPURS_settings.OverGridFactor/2)*2/sqrtN)]);
