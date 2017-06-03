@@ -13,11 +13,10 @@ else
     for ii=0:n+1
         NCKv(ii+1) = nchoosek(n+1,ii);
     end
-    NCK_1_K = repmat(NCKv.*(-1).^(sdegree.'),1,length(rel_t_idx));
-    X_K_n_1_2 = (repmat(t(rel_t_idx).',length(NCKv),1)-repmat(sdegree.',1,length(rel_t_idx))+(n+1)/2);
+    X_K_n_1_2 = bsxfun(@minus, t(rel_t_idx).', sdegree.')+(n+1)/2;
     X_K_n_1_2 = (X_K_n_1_2 > 0).*X_K_n_1_2;
     X_K_n_1_2 = X_K_n_1_2.^n;
-    B = NCK_1_K.*X_K_n_1_2;
+    B = bsxfun(@times ,NCKv.*(-1).^(sdegree.'), X_K_n_1_2);
     xt = zeros(size(t));
     xt(rel_t_idx)=(1/factorial(n)).*sum(B,1);
     x = reshape(xt,tm,tn);

@@ -33,7 +33,7 @@ for ii=1:iimax
         jjm = (jj-1)*max_size+1;
         jjn = min(jj*max_size,length_ku);
         rxu = ku(jjm:jjn);
-        pxu_m_pxnu = repmat(rxu.',length(rxnu),1)-repmat(rxnu,1,length(rxu));
+        pxu_m_pxnu = bsxfun(@minus , rxu.' , rxnu);
         Atemp=BSpline_fast(real(pxu_m_pxnu),spline_degree).*BSpline_fast(imag(pxu_m_pxnu),spline_degree);
         [itemp,jtemp,stemp] = find(Atemp);
         if ~isempty(itemp)
