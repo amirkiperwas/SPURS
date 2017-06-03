@@ -19,7 +19,7 @@ if (exist(FullFileName, 'file')) && (ForceGenrateNew == 0)
     disp(['Required PHI was already computed. Loading PHI from ',HashIn,'.mat']);
 else
     if (exist(FullFileName, 'file'))
-        delete fullFileName;
+        delete FullFileName;
     end
     
     switch(KernelFunction.type)
