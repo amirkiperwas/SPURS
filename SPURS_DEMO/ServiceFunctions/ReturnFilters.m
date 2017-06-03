@@ -6,7 +6,7 @@ r_aq = r_aq./sum(r_aq);
 
 xx = (((-sqrtN/2:1/OverGridFactor:(sqrtN/2-1/OverGridFactor))./sqrtN)*OverGridFactor);
 R_AQ = (sinc(xx)).^(KernelFunction.degree+1);
-R_AA = (xx>-1/2).*(xx<1/2);
+R_AA = (xx>=-1/2).*(xx<1/2);
 ImgFilter = repmat(R_AQ.*R_AA,sqrtN*OverGridFactor,1);
 ImgFilter = ImgFilter.*(ImgFilter');
 
